@@ -37,7 +37,7 @@
   <h3>All I Know Is, IYKYK</h3>
  <p>This project is my first attempt at implementing Typescript and should work in all modern browsers.</p>
  <p>View <img src="https://cdn-icons-png.flaticon.com/128/608/608258.png" alt="down arrow" width="15" height="15"/> Here</p>
- <a href="src/images/IYKYK.png" target="_blank" >
+ <a href="https://iykyk-two.vercel.app/" target="_blank" >
          <img align="center" src="src/images/IYKYK.png" alt="All I Know Is, IYKYK Quiz App"/>
       </a>
 <div>
