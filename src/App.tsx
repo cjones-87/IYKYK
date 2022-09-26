@@ -66,7 +66,12 @@ const App = () => {
 
   return (
     <div className="centered">
-      <h1>All I Know Is, IYKYK</h1>
+      <h2>All I Know Is</h2>
+      <h1>
+        <big>
+          <b>IYKYK</b>
+        </big>
+      </h1>
       <h2>Quiz Game</h2>
       {gameOver || userAnswers.length === TotalQuestions ? (
         <button className="start" onClick={startTrivia}>
