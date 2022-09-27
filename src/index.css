@@ -8,8 +8,31 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.button {
+  background-color: indigo;
+  border-radius: 25%;
+  color: #eef518;
+}
+
+.button:hover {
+  background-color: #eef518;
+  color: indigo;
+}
+
+.button:disabled {
+  background-color: transparent;
+  color: red;
+}
+
 .centered {
   color: indigo;
   text-align: center;
   text-shadow: 0 0 12px #eef518;
+}
+
+.grid {
+  display: grid;
+  grid-template-areas: 'answerOne answerTwo';
+  justify-content: space-evenly;
+  align-content: center;
 }

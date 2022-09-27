@@ -74,7 +74,7 @@ const App = () => {
       </h1>
       <h2>Quiz Game</h2>
       {gameOver || userAnswers.length === TotalQuestions ? (
-        <button className="start" onClick={startTrivia}>
+        <button className="start button" onClick={startTrivia}>
           Start
         </button>
       ) : null}
@@ -94,7 +94,7 @@ const App = () => {
       !loading &&
       userAnswers.length === number + 1 &&
       number !== TotalQuestions - 1 ? (
-        <button className="next" onClick={nextQuestion}>
+        <button className="next button" onClick={nextQuestion}>
           Next Question
         </button>
       ) : null}

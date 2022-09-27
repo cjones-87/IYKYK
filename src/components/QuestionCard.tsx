@@ -25,10 +25,16 @@ const QuestionCard: React.FC<Props> = ({
         Question: {questionNumber} of {totalQuestions}
       </p>
       <p dangerouslySetInnerHTML={{ __html: question }} />
-      <div>
-        {answers.map((answer) => (
-          <div key={answer}>
-            <button disabled={!!userAnswer} onClick={callback} value={answer}>
+      <div className="grid">
+        {answers.map((answer, index) => (
+          <div key={index} className="gridItem">
+            <button
+              className="button"
+              disabled={!!userAnswer}
+              onClick={callback}
+              value={answer}
+              style={{ width: window.screen.width / 7 }}
+            >
               <span dangerouslySetInnerHTML={{ __html: answer }} />
             </button>
           </div>
