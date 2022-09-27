@@ -21,13 +21,16 @@ const QuestionCard: React.FC<Props> = ({
 }) => {
   return (
     <div className="container">
-      <p className="number background">
-        Question: {questionNumber} of {totalQuestions}
-      </p>
-      <p
-        className="background"
-        dangerouslySetInnerHTML={{ __html: question }}
-      />
+      <div className="grid2">
+        <p className="pBackground" style={{ width: window.innerHeight / 3 }}>
+          Question: {questionNumber} of {totalQuestions}
+        </p>
+        <p
+          className="pBackground"
+          dangerouslySetInnerHTML={{ __html: question }}
+          style={{ width: window.innerHeight / 1.5 }}
+        />
+      </div>
       <div className="grid">
         {answers.map((answer, index) => (
           <div key={index} className="gridItem">
