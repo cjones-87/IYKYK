@@ -28,7 +28,7 @@ const QuestionCard: React.FC<Props> = ({
         <p
           className="pBackground"
           dangerouslySetInnerHTML={{ __html: question }}
-          style={{ width: window.innerHeight / 1.5 }}
+          style={{ marginBottom: '30px', width: window.innerHeight / 1.5 }}
         />
       </div>
       <div className="grid">
