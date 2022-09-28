@@ -33,7 +33,7 @@ const QuestionCard: React.FC<Props> = ({
       </div>
       <div className="grid">
         {answers.map((answer, index) => (
-          <div key={index} className="gridItem">
+          <div key={index}>
             <button
               className="button"
               disabled={!!userAnswer}
