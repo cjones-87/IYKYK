@@ -22,13 +22,17 @@ const QuestionCard: React.FC<Props> = ({
   return (
     <div className="container">
       <div className="grid2">
-        <p className="pBackground" style={{ width: window.innerHeight / 3 }}>
+        <p className="pBackground" style={{ width: window.innerHeight / 3.5 }}>
           Question: {questionNumber} of {totalQuestions}
         </p>
         <p
           className="pBackground"
           dangerouslySetInnerHTML={{ __html: question }}
-          style={{ marginBottom: '30px', width: window.innerHeight / 1.5 }}
+          style={{
+            lineHeight: '6rem',
+            marginBottom: '30px',
+            width: 'auto',
+          }}
         />
       </div>
       <div className="grid">
@@ -41,10 +45,14 @@ const QuestionCard: React.FC<Props> = ({
               value={answer}
               style={{
                 paddingBottom: 20,
-                width: window.screen.width / 5,
+                width: 'auto',
               }}
             >
-              <span dangerouslySetInnerHTML={{ __html: answer }} />
+              <span
+                className="answerSpan"
+                dangerouslySetInnerHTML={{ __html: answer }}
+                style={{ lineHeight: '2.5rem' }}
+              />
             </button>
           </div>
         ))}
