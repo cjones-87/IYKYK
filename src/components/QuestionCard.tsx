@@ -39,7 +39,10 @@ const QuestionCard: React.FC<Props> = ({
               disabled={!!userAnswer}
               onClick={callback}
               value={answer}
-              style={{ width: window.screen.width / 7 }}
+              style={{
+                paddingBottom: 20,
+                width: window.screen.width / 5,
+              }}
             >
               <span dangerouslySetInnerHTML={{ __html: answer }} />
             </button>
