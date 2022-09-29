@@ -24,6 +24,7 @@ body {
   border: red 3px groove;
   border-radius: 100px;
   color: #eef518;
+  height: 3rem;
   text-shadow: 0 0 12px red;
 }
 
@@ -62,4 +63,5 @@ body {
   display: grid;
   grid-template-areas: 'one';
   justify-content: center;
+  margin: 10;
 }
