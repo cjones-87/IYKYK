@@ -8,15 +8,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-.pBackground {
-  /* border  forestgreen ferngreen green kellygreen seagreen shamrockgreen viridian*/
-  background-color: #40826d;
-  border: red 3px groove;
-  border-radius: 100px;
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  margin-top: 50px;
+.answerSpan {
+  flex: 1;
+  justify-content: 'center';
+  align-items: 'center';
 }
 
 .button {
@@ -24,6 +19,7 @@ body {
   border: red 3px groove;
   border-radius: 100px;
   color: #eef518;
+  font-size: 1.5rem;
   height: 3rem;
   text-shadow: 0 0 12px red;
 }
@@ -54,7 +50,7 @@ body {
 .grid {
   align-content: center;
   display: grid;
-  grid-template-areas: 'answerOne answerTwo';
+  grid-template-areas: 'answerOne';
   justify-content: space-around;
 }
 
@@ -64,4 +60,15 @@ body {
   grid-template-areas: 'one';
   justify-content: center;
   margin: 10;
+}
+
+.pBackground {
+  /* border  forestgreen ferngreen green kellygreen seagreen shamrockgreen viridian*/
+  background-color: #40826d;
+  border: red 3px groove;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 50px;
 }

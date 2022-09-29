@@ -78,7 +78,9 @@ const App = () => {
           Start
         </button>
       ) : null}
-      {!gameOver ? <p className="score">Score: {score}</p> : null}
+      {!gameOver ? (
+        <p className="score">Score: {(score / TotalQuestions) * 100}%</p>
+      ) : null}
       {loading ? <p>Loading Questions {'\n'} Please Wait ...</p> : null}
       {!loading && !gameOver ? (
         <QuestionCard
