@@ -1,17 +1,8 @@
 import React from 'react';
 
-import { AnswerObject } from '../App';
+import { Props } from '../../utils/utils';
 
-type Props = {
-  question: string;
-  answers: string[];
-  callback: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  userAnswer: AnswerObject | undefined;
-  questionNumber: number;
-  totalQuestions: number;
-};
-
-const QuestionCard: React.FC<Props> = ({
+const AnimeCard: React.FC<Props> = ({
   answers,
   callback,
   question,
@@ -61,4 +52,4 @@ const QuestionCard: React.FC<Props> = ({
   );
 };
 
-export default QuestionCard;
+export default AnimeCard;

@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 
-import QuestionCard from './components/QuestionCard';
+import AnimeCard from './AnimeCard';
 
-import { Difficulty, QuestionState, fetchQuizQuestions } from './API';
+import {
+  AnswerObject,
+  Difficulty,
+  QuestionState,
+  TotalQuestions,
+} from '../../utils/utils';
+import { fetchQuizQuestions } from './AnimeAPI';
 
-export type AnswerObject = {
-  answer: string;
-  correct: boolean;
-  correctAnswer: string;
-  question: string;
-};
-
-const TotalQuestions = 20;
-
-const App = () => {
+const Anime = () => {
   const [gameOver, setGameOver] = useState(true);
   const [loading, setLoading] = useState(false);
   const [number, setNumber] = useState(0);
@@ -83,7 +80,7 @@ const App = () => {
       ) : null}
       {loading ? <p>Loading Questions {'\n'} Please Wait ...</p> : null}
       {!loading && !gameOver ? (
-        <QuestionCard
+        <AnimeCard
           questionNumber={number + 1}
           totalQuestions={TotalQuestions}
           question={questions[number].question}
@@ -104,4 +101,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Anime;

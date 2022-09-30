@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import App from './components/anime/Anime';
 
 test('renders header title element', () => {
   render(<App />);
