@@ -3,7 +3,7 @@ import React from 'react';
 const Navbar = () => {
   return (
     <div className="navbar">
-      <a href="/" style={{ lineHeight: '6rem' }}>
+      <a href="/home" style={{ lineHeight: '6rem' }}>
         Home
       </a>
       <a href="/anime" style={{ lineHeight: '6rem' }}>
