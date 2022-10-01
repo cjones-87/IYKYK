@@ -62,6 +62,24 @@ body {
   margin: 10;
 }
 
+.navbar {
+  background-color: rebeccapurple;
+  border: red 6px groove;
+  border-radius: 100px;
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  text-shadow: 0 0 12px #eef518;
+  width: auto;
+}
+
+.navbar,
+a {
+  color: red;
+  font-size: 3rem;
+  text-decoration: none;
+}
+
 .pBackground {
   /* border  forestgreen ferngreen green kellygreen seagreen shamrockgreen viridian*/
   background-color: #40826d;
