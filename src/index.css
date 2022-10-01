@@ -63,7 +63,7 @@ body {
 }
 
 .navbar {
-  background-color: rebeccapurple;
+  background-color: indigo;
   border: red 6px groove;
   border-radius: 100px;
   display: flex;
