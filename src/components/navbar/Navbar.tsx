@@ -15,6 +15,9 @@ const Navbar = () => {
       <a href="/music" style={{ lineHeight: '6rem' }}>
         Music
       </a>
+      <a href="/vehicles" style={{ lineHeight: '6rem' }}>
+        Vehicles
+      </a>
     </div>
   );
 };
