@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 
 import { NavLink } from 'react-router-dom';
-// import './Navbar.css';
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
