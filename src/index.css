@@ -19,6 +19,7 @@ body {
   border: red 3px groove;
   border-radius: 100px;
   color: #eef518;
+  cursor: pointer;
   font-size: 1.5rem;
   height: 3rem;
   text-shadow: 0 0 12px red;
@@ -85,25 +86,28 @@ a {
   align-items: center;
   display: flex;
   height: 80px;
-  justify-content: center;
   max-width: 1500px;
   width: 100%;
 }
 
 .nav-logo {
-  align-items: center;
   color: #eef518;
   cursor: pointer;
   flex-grow: 1;
   font-size: 2rem;
-  margin-left: 20px;
+  left: 0%;
+  position: fixed;
   text-decoration: none;
+  top: 2.5%;
 }
 
 .nav-menu {
   display: flex;
+  flex-direction: row;
+  left: 20%;
   list-style: none;
-  margin-right: 2rem;
+  margin-left: 2rem;
+  position: relative;
   text-align: center;
 }
 
@@ -188,6 +192,15 @@ a {
     font-size: 1.8rem;
     position: absolute;
     right: 1%;
+    top: 10%;
+    transform: translate(-100%, 60%);
+  }
+
+  .nav-logo {
+    display: block;
+    font-size: 1.8rem;
+    position: absolute;
+    left: 45%;
     top: 10%;
     transform: translate(-100%, 60%);
   }
