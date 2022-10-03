@@ -14,8 +14,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Navbar />
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/anime" element={<Anime />} />
