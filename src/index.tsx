@@ -6,6 +6,7 @@ import Navbar from './components/navbar/Navbar';
 import LandingPage from './components/landingPage/LandingPage';
 import Home from './components/home/Home';
 import Anime from './components/anime/Anime';
+import Cartoons from './components/cartoons/Cartoons';
 import Comics from './components/comics/Comics';
 import Music from './components/music/Music';
 import Vehicles from './components/vehicles/Vehicles';
@@ -21,6 +22,7 @@ root.render(
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
         <Route path="/anime" element={<Anime />} />
+        <Route path="/cartoons" element={<Cartoons />} />
         <Route path="/comics" element={<Comics />} />
         <Route path="/music" element={<Music />} />
         <Route path="/vehicles" element={<Vehicles />} />
