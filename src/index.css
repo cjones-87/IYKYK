@@ -170,7 +170,7 @@ a {
 
   .nav-menu.active {
     background: indigo;
-    left: 0px;
+    left: -7%;
     opacity: 1;
     transition: all 0.5s ease;
     z-index: 1;
