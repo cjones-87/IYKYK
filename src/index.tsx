@@ -8,6 +8,7 @@ import Home from './components/home/Home';
 import Anime from './components/anime/Anime';
 import Cartoons from './components/cartoons/Cartoons';
 import Comics from './components/comics/Comics';
+import Computers from './components/computers/Computers';
 import Music from './components/music/Music';
 import Vehicles from './components/vehicles/Vehicles';
 
@@ -24,6 +25,7 @@ root.render(
         <Route path="/anime" element={<Anime />} />
         <Route path="/cartoons" element={<Cartoons />} />
         <Route path="/comics" element={<Comics />} />
+        <Route path="/computers" element={<Computers />} />
         <Route path="/music" element={<Music />} />
         <Route path="/vehicles" element={<Vehicles />} />
       </Routes>
