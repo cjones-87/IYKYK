@@ -63,6 +63,17 @@ const Navbar: React.FC = () => {
             </li>
             <li className="nav-item">
               <NavLink
+                to="/computers"
+                className={({ isActive }) =>
+                  isActive ? 'nav-links active' : 'nav-links'
+                }
+                onClick={handleClick}
+              >
+                Computers
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
                 to="/music"
                 className={({ isActive }) =>
                   isActive ? 'nav-links active' : 'nav-links'
