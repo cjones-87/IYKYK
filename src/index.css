@@ -155,7 +155,7 @@ a {
   display: none;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1850px) {
   .nav-menu {
     border-top: 1px solid #fff;
     display: flex;
@@ -206,6 +206,57 @@ a {
   }
 }
 
+@media screen and (max-width: 480px) {
+  .nav-menu {
+    border-top: 1px solid #fff;
+    display: flex;
+    flex-direction: column;
+    left: -110%;
+    opacity: 1;
+    position: absolute;
+    top: 80px;
+    transition: all 0.5s ease;
+    width: 100%;
+  }
+
+  .nav-menu.active {
+    background: indigo;
+    left: -7%;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+  .nav-item .active {
+    border: none;
+    color: #eef518;
+  }
+  .nav-links {
+    display: table;
+    padding: 1.5rem;
+    width: 100%;
+  }
+
+  .nav-icon {
+    color: #eef518;
+    cursor: pointer;
+    display: block;
+    font-size: 1.5rem;
+    position: absolute;
+    right: 1%;
+    top: 10%;
+    transform: translate(-100%, 60%);
+  }
+
+  .nav-logo {
+    display: block;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 50%;
+    top: -15%;
+    transform: translate(-100%, 60%);
+  }
+}
+
 .pBackground {
   /* border  forestgreen ferngreen green kellygreen seagreen shamrockgreen viridian*/
   background-color: #40826d;
@@ -215,4 +266,27 @@ a {
   justify-content: center;
   margin: auto;
   margin-top: 50px;
+}
+
+#section {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+#section div {
+  border: groove 0.5rem red;
+  width: 100%;
+}
+
+#section-1 {
+  background: whitesmoke;
+  padding: 1rem;
+  text-align: center;
+}
+
+#section-2 {
+  background: #40826d;
+  padding: 1rem;
+  text-align: center;
 }
