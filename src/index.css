@@ -96,9 +96,9 @@ a {
   flex-grow: 1;
   font-size: 2rem;
   left: 0%;
-  position: fixed;
+  position: absolute;
   text-decoration: none;
-  top: 2.5%;
+  top: 25%;
 }
 
 .nav-menu {

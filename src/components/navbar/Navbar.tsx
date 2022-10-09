@@ -11,11 +11,12 @@ const Navbar: React.FC = () => {
   return (
     <>
       <nav className="navbar">
-        <NavLink to="/" className="nav-logo">
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All I Know Is, IYKYK &nbsp;&nbsp;
-          <i className="fas fa-gamepad"></i>
-        </NavLink>
         <div className="nav-container">
+          <NavLink to="/home" className="nav-logo">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All I Know Is, IYKYK
+            &nbsp;&nbsp;
+            <i className="fas fa-gamepad"></i>
+          </NavLink>
           <ul className={isClicked ? 'nav-menu active' : 'nav-menu'}>
             <li className="nav-item">
               <NavLink
