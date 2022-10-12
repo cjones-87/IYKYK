@@ -95,8 +95,9 @@ a {
   cursor: pointer;
   flex-grow: 1;
   font-size: 2rem;
-  left: 0%;
+  left: 6%;
   text-decoration: none;
+  top: 7%;
 }
 
 .nav-menu {
@@ -119,10 +120,6 @@ a {
 
 .nav-links:hover {
   color: #40826d;
-}
-
-.fa-code {
-  margin-left: 1rem;
 }
 
 .nav-item {
