@@ -15,18 +15,14 @@ const Navbar: React.FC = () => {
       <nav className="navbar">
         <div className="nav-container">
           <NavLink to="/home" className="nav-logo">
-            <i
+            <img
+              alt="site logo"
+              height="70vh"
+              src={IYKYK}
               style={{
-                background: `url(${IYKYK})`,
-                backgroundPosition: 'center',
                 borderRadius: '50%',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: '70px',
                 display: 'flex',
-                height: 70,
-                position: 'sticky',
-                top: '1%',
-                width: 70,
+                position: 'static',
               }}
             />
           </NavLink>
