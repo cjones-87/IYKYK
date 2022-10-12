@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import { NavLink } from 'react-router-dom';
 
+import IYKYK from '../../images/AIKI-IYKYK.png';
+
 const Navbar: React.FC = () => {
   const [isClicked, setIsClicked] = useState(false);
 
@@ -13,9 +15,20 @@ const Navbar: React.FC = () => {
       <nav className="navbar">
         <div className="nav-container">
           <NavLink to="/home" className="nav-logo">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All I Know Is, IYKYK
-            &nbsp;&nbsp;
-            <i className="fas fa-gamepad"></i>
+            <i
+              style={{
+                background: `url(${IYKYK})`,
+                backgroundPosition: 'center',
+                borderRadius: '50%',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: '70px',
+                display: 'flex',
+                height: 70,
+                position: 'sticky',
+                top: '1%',
+                width: 70,
+              }}
+            />
           </NavLink>
           <ul className={isClicked ? 'nav-menu active' : 'nav-menu'}>
             <li className="nav-item">

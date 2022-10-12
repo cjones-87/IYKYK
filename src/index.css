@@ -96,9 +96,7 @@ a {
   flex-grow: 1;
   font-size: 2rem;
   left: 0%;
-  position: absolute;
   text-decoration: none;
-  top: 25%;
 }
 
 .nav-menu {
@@ -198,11 +196,7 @@ a {
 
   .nav-logo {
     display: block;
-    font-size: 1.8rem;
     position: absolute;
-    left: 45%;
-    top: 10%;
-    transform: translate(-100%, 60%);
   }
 }
 
@@ -249,11 +243,7 @@ a {
 
   .nav-logo {
     display: block;
-    font-size: 1.5rem;
     position: absolute;
-    left: 50%;
-    top: -15%;
-    transform: translate(-100%, 60%);
   }
 }
 
