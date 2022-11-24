@@ -65,12 +65,12 @@ body {
 }
 
 .navbar {
-  background-color: indigo;
+  background-color: lavenderblush;
   border: red 6px groove;
-  border-radius: 100px;
+  /* border-radius: 100px; */
   display: flex;
   justify-content: space-evenly;
-  position: sticky;
+  position: relative;
   text-align: center;
   text-shadow: 0 0 12px #eef518;
   width: auto;
@@ -91,7 +91,6 @@ a {
 }
 
 .nav-logo {
-  color: #eef518;
   cursor: pointer;
   flex-grow: 1;
   font-size: 2rem;
@@ -112,7 +111,7 @@ a {
 
 .nav-links {
   border-bottom: 3px solid transparent;
-  color: #fff;
+  color: indigo;
   height: 100%;
   padding: 0.5rem 1rem;
   text-decoration: none;
@@ -137,13 +136,13 @@ a {
 }
 
 .nav-item:hover:after {
-  background: #eef518;
+  background: #40826d;
   width: 100%;
 }
 
 .nav-item .active {
   border: 1px solid #eef518;
-  color: #eef518;
+  color: #40826d;
 }
 
 .nav-icon {
@@ -164,7 +163,7 @@ a {
   }
 
   .nav-menu.active {
-    background: indigo;
+    background: lavenderblush;
     left: -7%;
     opacity: 1;
     transition: all 0.5s ease;
@@ -172,7 +171,6 @@ a {
   }
   .nav-item .active {
     border: none;
-    color: #eef518;
   }
   .nav-links {
     display: table;
@@ -181,7 +179,7 @@ a {
   }
 
   .nav-icon {
-    color: #eef518;
+    color: #40826d;
     cursor: pointer;
     display: block;
     font-size: 1.8rem;
