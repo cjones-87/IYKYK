@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import * as THREE from 'three';
 
@@ -11,6 +11,11 @@ import OpenUp from '../../audio/OpenUp.mp3';
 import AccessGrantedComputerVoice from '../../audio/AccessGrantedComputerVoice.mp3';
 
 const LandingPage: React.FC = () => {
+  const [dimensions, setDimensions] = useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
+
   useEffect(() => {
     const scene: THREE.Scene = new THREE.Scene();
     const camera: THREE.PerspectiveCamera = new THREE.PerspectiveCamera(
@@ -144,7 +149,18 @@ const LandingPage: React.FC = () => {
     };
 
     animate();
-  }, []);
+
+    const handleResize = () => {
+      setDimensions({ height: window.innerHeight, width: window.innerWidth });
+      window.location.reload();
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [dimensions.height, dimensions.width]);
 
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setTimeout(() => (window.location.href = './home'), 2000);

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import * as THREE from 'three';
 
@@ -8,11 +8,16 @@ import smoke from '../../images/smoke.png';
 import stars from '../../images/stars.png';
 
 const Home = () => {
+  const [dimensions, setDimensions] = useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
+
   useEffect(() => {
     const scene: THREE.Scene = new THREE.Scene();
     const camera: THREE.PerspectiveCamera = new THREE.PerspectiveCamera(
       60,
-      window.innerWidth / window.innerHeight,
+      dimensions.width / dimensions.height,
       1,
       2000
     );
@@ -73,7 +78,7 @@ const Home = () => {
       stencil: false,
       depth: false,
     });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(dimensions.width, dimensions.height);
     scene.fog =
       localStorage.getItem('lightMode') === 'true'
         ? new THREE.FogExp2(0x51414f, 0.0001)
@@ -141,14 +146,25 @@ const Home = () => {
     };
 
     animate();
-  }, []);
+
+    const handleResize = () => {
+      setDimensions({ height: window.innerHeight, width: window.innerWidth });
+      window.location.reload();
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [dimensions.height, dimensions.width]);
 
   return (
     <div
       id="canvas"
       style={{
-        height: window.innerHeight,
-        width: window.innerWidth,
+        height: dimensions.height,
+        width: dimensions.width,
         zIndex: -100,
       }}
     >
@@ -166,7 +182,7 @@ const Home = () => {
             margin: 'auto',
             paddingTop: '50px',
             position: 'absolute',
-            top: window.innerHeight / 1.7,
+            top: dimensions.height / 1.7,
             transform: 'translate(-50%, -50%)',
             zIndex: 0,
           }}
@@ -187,9 +203,11 @@ const Home = () => {
               from.
             </small>
           </p>
-          <p>
+
+          <h6>
             <small>Our Quiz Categories</small>
-          </p>
+          </h6>
+
           <div id="section">
             <div id="section-1">Anime</div>
             <div id="section-2">Cartoons</div>
