@@ -180,12 +180,12 @@ const LandingPage: React.FC = () => {
       style={{
         height: window.innerHeight - 20,
         width: window.innerWidth,
-        zIndex: -100,
+        zIndex: -10,
       }}
     >
       <div
         style={{
-          zIndex: -20,
+          zIndex: -5,
         }}
       >
         <div
