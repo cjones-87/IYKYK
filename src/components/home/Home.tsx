@@ -161,12 +161,12 @@ const Home = () => {
       style={{
         height: dimensions.height,
         width: dimensions.width,
-        zIndex: -100,
+        zIndex: -10,
       }}
     >
       <div
         style={{
-          zIndex: -20,
+          zIndex: -5,
         }}
       >
         <div
