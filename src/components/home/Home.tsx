@@ -153,10 +153,6 @@ const Home = () => {
     };
 
     window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
   }, [dimensions.height, dimensions.width]);
 
   return (
