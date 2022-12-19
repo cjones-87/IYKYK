@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { NavLink } from 'react-router-dom';
 
@@ -6,13 +6,24 @@ import IYKYK from '../../images/AIKI-IYKYK.png';
 
 const Navbar: React.FC = () => {
   const [isClicked, setIsClicked] = useState(false);
+  const [dimensions, setDimensions] = useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
 
   const handleClick = () => {
     setIsClicked(!isClicked);
   };
+
+  useEffect(() => {
+    const handleResize = () =>
+      setDimensions({ height: window.innerHeight, width: window.innerWidth });
+
+    window.addEventListener('resize', handleResize);
+  }, [dimensions.width, dimensions.height]);
   return (
     <>
-      <nav className="navbar">
+      <nav className="navbar" style={{ width: dimensions.width }}>
         <div className="nav-container">
           <NavLink to="/home" className="nav-logo">
             <img
