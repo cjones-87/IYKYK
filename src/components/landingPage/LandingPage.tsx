@@ -20,7 +20,7 @@ const LandingPage: React.FC = () => {
     const scene: THREE.Scene = new THREE.Scene();
     const camera: THREE.PerspectiveCamera = new THREE.PerspectiveCamera(
       60,
-      window.innerWidth / window.innerHeight,
+      dimensions.width / dimensions.height,
       1,
       2000
     );
@@ -87,7 +87,7 @@ const LandingPage: React.FC = () => {
         ? new THREE.FogExp2(0x51414f, 0.0001)
         : new THREE.FogExp2(0xe0b0ff, 0.0001);
     renderer.setClearColor(scene.fog.color);
-    document.getElementById('canvas')!.appendChild(renderer.domElement);
+    document.getElementById('canvas')?.appendChild(renderer.domElement);
 
     let loader = new THREE.TextureLoader();
 
@@ -150,13 +150,14 @@ const LandingPage: React.FC = () => {
 
     animate();
 
-    const handleResize = () => {
+    const handleResize = () =>
       setDimensions({ height: window.innerHeight, width: window.innerWidth });
-      window.location.reload();
-    };
 
     window.addEventListener('resize', handleResize);
-  }, [dimensions.height, dimensions.width]);
+    handleResize();
+
+    // return (window.onresize = handleResize);
+  }, [dimensions.width, dimensions.height]);
 
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setTimeout(() => (window.location.href = './home'), 2000);
@@ -178,13 +179,14 @@ const LandingPage: React.FC = () => {
     <div
       id="canvas"
       style={{
-        height: window.innerHeight - 20,
-        width: window.innerWidth,
+        height: dimensions.height,
+        width: dimensions.width,
         zIndex: -10,
       }}
     >
       <div
         style={{
+          // width: dimensions.width,
           zIndex: -5,
         }}
       >
@@ -194,10 +196,10 @@ const LandingPage: React.FC = () => {
             backgroundColor: 'transparent',
             color: 'indigo',
             left: '50%',
-            margin: 'auto',
+            // margin: 'auto',
             paddingTop: '50px',
             position: 'absolute',
-            top: window.innerHeight / 1.7,
+            // top: dimensions.height / 1.7,
             transform: 'translate(-50%, -50%)',
             zIndex: 0,
           }}
