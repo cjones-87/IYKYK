@@ -155,8 +155,6 @@ const LandingPage: React.FC = () => {
 
     window.addEventListener('resize', handleResize);
     handleResize();
-
-    // return (window.onresize = handleResize);
   }, [dimensions.width, dimensions.height]);
 
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
