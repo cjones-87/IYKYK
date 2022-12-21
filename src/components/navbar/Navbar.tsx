@@ -20,11 +20,14 @@ const Navbar: React.FC = () => {
       setDimensions({ height: window.innerHeight, width: window.innerWidth });
 
     window.addEventListener('resize', handleResize);
+
+    handleResize();
   }, [dimensions.width, dimensions.height]);
+
   return (
     <>
-      <nav className="navbar" style={{ width: dimensions.width }}>
-        <div className="nav-container">
+      <nav className="navbar">
+        <div className="nav-container" style={{ width: dimensions.width }}>
           <NavLink to="/home" className="nav-logo">
             <img
               alt="site logo"
