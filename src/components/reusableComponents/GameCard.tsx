@@ -1,7 +1,7 @@
 import React from 'react';
-import { Props } from '../../utils/utils';
+import { GameCardProps } from '../../utils/utils';
 
-const GameCard: React.FC<Props> = ({
+const GameCard: React.FC<GameCardProps> = ({
   answers,
   callback,
   question,
