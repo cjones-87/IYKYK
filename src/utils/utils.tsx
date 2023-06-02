@@ -1,3 +1,13 @@
+export interface Dimensions {
+  height: number;
+  width: number;
+}
+
+export interface GameProps {
+  category: number;
+  type: string;
+}
+
 export type Question = {
   category: string;
   correct_answer: string;
@@ -22,7 +32,7 @@ export type AnswerObject = {
   question: string;
 };
 
-export type Props = {
+export type GameCardProps = {
   question: string;
   answers: string[];
   callback: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -33,8 +43,22 @@ export type Props = {
 
 export const TotalQuestions = 10;
 
-export const shuffleArray = (array: any[]) =>
-  [...array].sort(() => Math.random() - 0.5);
-//   let remainingElements: number = array.length,
-//     temp,
-//     index: number;
+export const shuffleArray = (array: string[]): string[] => {
+  let remainingElementsToBeShuffled = array.length;
+  let temp: string;
+  let index: number;
+
+  while (remainingElementsToBeShuffled) {
+    index = Math.floor(Math.random() * remainingElementsToBeShuffled--);
+    temp = array[remainingElementsToBeShuffled];
+    array[remainingElementsToBeShuffled] = array[index];
+    array[index] = temp;
+  }
+
+  return array;
+};
+
+export type NavbarObject = {
+  content: string;
+  href: string;
+};
