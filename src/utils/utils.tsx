@@ -43,11 +43,20 @@ export type GameCardProps = {
 
 export const TotalQuestions = 10;
 
-export const shuffleArray = (array: any[]) =>
-  [...array].sort(() => Math.random() - 0.5);
-//   let remainingElements: number = array.length,
-//     temp,
-//     index: number;
+export const shuffleArray = (array: string[]): string[] => {
+  let remainingElementsToBeShuffled = array.length;
+  let temp: string;
+  let index: number;
+
+  while (remainingElementsToBeShuffled) {
+    index = Math.floor(Math.random() * remainingElementsToBeShuffled--);
+    temp = array[remainingElementsToBeShuffled];
+    array[remainingElementsToBeShuffled] = array[index];
+    array[index] = temp;
+  }
+
+  return array;
+};
 
 export type NavbarObject = {
   content: string;
