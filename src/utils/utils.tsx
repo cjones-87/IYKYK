@@ -5,6 +5,7 @@ export interface Dimensions {
 
 export interface GameProps {
   category: number;
+  header: string;
   type: string;
 }
 
