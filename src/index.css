@@ -75,11 +75,13 @@ body {
 
 #homeHeader1 {
   font-size: 5rem;
+  margin-bottom: 2rem;
   text-shadow: 2px 2px 2px #4b0082;
 }
 
 #homeHeader2 {
   font-size: 4rem;
+  margin-bottom: 2rem;
   text-shadow: 2px 2px 2px #4b0082;
 }
 
