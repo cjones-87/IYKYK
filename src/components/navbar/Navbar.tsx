@@ -1,141 +1,66 @@
-import React, { useEffect, useState } from 'react';
-
+import { useCallback, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import NavbarData from './data/NavbarData';
+import NavbarLogo from './NavbarLogo';
 
-import IYKYK from '../../images/AIKI-IYKYK.png';
-
-const Navbar: React.FC = () => {
-  const [isClicked, setIsClicked] = useState(false);
+const Navbar = () => {
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
   });
 
-  const handleClick = () => {
-    setIsClicked(!isClicked);
-  };
+  const [burgerActive, setBurgerActive] = useState(false);
+
+  const handleBurgerClick = useCallback(() => {
+    setBurgerActive((current) => !current);
+  }, []);
+
+  const handleNavLinkClick = useCallback(() => {
+    setBurgerActive((current) => !current);
+  }, []);
 
   useEffect(() => {
-    const handleResize = () =>
-      setDimensions({ height: window.innerHeight, width: window.innerWidth });
+    const handleResize = () => {
+      if (window.innerWidth > 767) setBurgerActive(false);
+
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth,
+      });
+    };
 
     window.addEventListener('resize', handleResize);
-
-    handleResize();
-  }, [dimensions.width, dimensions.height]);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [dimensions.height, dimensions.width]);
 
   return (
-    <>
+    <div style={{ width: dimensions.width }}>
       <nav className="navbar">
-        <div className="nav-container" style={{ width: dimensions.width }}>
-          <NavLink to="/home" className="nav-logo">
-            <img
-              alt="site logo"
-              height="70vh"
-              src={IYKYK}
-              style={{
-                borderRadius: '50%',
-                display: 'flex',
-                position: 'static',
-              }}
-            />
-          </NavLink>
-          <ul className={isClicked ? 'nav-menu active' : 'nav-menu'}>
-            <li className="nav-item">
-              <NavLink
-                to="/home"
-                className={({ isActive }) =>
-                  isActive ? 'nav-links active' : 'nav-links'
-                }
-                onClick={handleClick}
-              >
-                Home
+        <NavLink className="navbarLogo" to="/">
+          <NavbarLogo />
+        </NavLink>
+
+        <ul className={`navMenu ${burgerActive ? 'active' : ''}`}>
+          {NavbarData.map((data, index) => (
+            <li className="navItem" key={index}>
+              <NavLink to={data.href} onClick={handleNavLinkClick}>
+                <button className="navLink button">{data.content}</button>
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink
-                to="/anime"
-                className={({ isActive }) =>
-                  isActive ? 'nav-links active' : 'nav-links'
-                }
-                onClick={handleClick}
-              >
-                Anime
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                to="/cartoons"
-                className={({ isActive }) =>
-                  isActive ? 'nav-links active' : 'nav-links'
-                }
-                onClick={handleClick}
-              >
-                Cartoons
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                to="/comics"
-                className={({ isActive }) =>
-                  isActive ? 'nav-links active' : 'nav-links'
-                }
-                onClick={handleClick}
-              >
-                Comics
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                to="/computers"
-                className={({ isActive }) =>
-                  isActive ? 'nav-links active' : 'nav-links'
-                }
-                onClick={handleClick}
-              >
-                Computers
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                to="/mathematics"
-                className={({ isActive }) =>
-                  isActive ? 'nav-links active' : 'nav-links'
-                }
-                onClick={handleClick}
-              >
-                Mathematics
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                to="/music"
-                className={({ isActive }) =>
-                  isActive ? 'nav-links active' : 'nav-links'
-                }
-                onClick={handleClick}
-              >
-                Music
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                to="/vehicles"
-                className={({ isActive }) =>
-                  isActive ? 'nav-links active' : 'nav-links'
-                }
-                onClick={handleClick}
-              >
-                Vehicles
-              </NavLink>
-            </li>
-          </ul>
-          <div className="nav-icon" onClick={handleClick}>
-            <i className={isClicked ? 'fas fa-times' : 'fas fa-bars'}></i>
+          ))}
+        </ul>
+        <div
+          className={`navBurger ${burgerActive ? 'active' : ''}`}
+          onClick={handleBurgerClick}
+        >
+          <div className="barGroup">
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
           </div>
         </div>
       </nav>
-    </>
+    </div>
   );
 };
 
