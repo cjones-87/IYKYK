@@ -39,7 +39,9 @@ body {
 /* landing page */
 
 #landingPageContainer {
+  color: whitesmoke;
   position: relative;
+  text-shadow: 2px 2px 2px #4b0082;
 }
 
 .landingPageContainer {
@@ -53,8 +55,9 @@ body {
 }
 
 .landingPageImage {
-  max-width: 100%;
+  border-radius: 50%;
   height: auto;
+  max-width: 100%;
 }
 
 #landingPageButton {
@@ -64,34 +67,39 @@ body {
 /* home page */
 
 #homeContainer {
+  color: whitesmoke;
   margin: 0 auto;
+  padding-top: 5rem;
   width: 75vw;
 }
 
 #homeHeader1 {
   font-size: 5rem;
+  text-shadow: 2px 2px 2px #4b0082;
 }
 
 #homeHeader2 {
   font-size: 4rem;
+  text-shadow: 2px 2px 2px #4b0082;
 }
 
 #homeHeader3 {
   font-size: 3rem;
-}
-
-#homeHeader4 {
-  font-size: 2rem;
+  text-shadow: 2px 2px 2px #4b0082;
 }
 
 #gameHeader {
+  color: whitesmoke;
   font-size: 5rem;
+  text-shadow: 2px 2px 2px #4b0082;
 }
 
 #section {
+  color: indigo;
   display: flex;
   flex-direction: row;
   font-size: 2rem;
+  text-shadow: 0 0 12px #eef518;
 }
 
 #section div {
