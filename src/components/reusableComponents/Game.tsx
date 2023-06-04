@@ -11,7 +11,7 @@ import {
 } from '../../utils/utils';
 import { fetchAPIQuizQuestions } from './fetchAPIQuizQuestions';
 
-const Game: React.FC<GameProps> = ({ category, type }) => {
+const Game: React.FC<GameProps> = ({ category, header, type }) => {
   const [gameOver, setGameOver] = useState(true);
   const [loading, setLoading] = useState(false);
   const [number, setNumber] = useState(0);
@@ -66,6 +66,10 @@ const Game: React.FC<GameProps> = ({ category, type }) => {
 
   return (
     <div className="centered">
+      <h1 id="gameHeader" style={{ display: gameOver ? 'block' : 'none' }}>
+        {header}
+      </h1>
+
       {gameOver || userAnswers.length === TotalQuestions ? (
         <button className="start button" onClick={startTrivia}>
           Start Game
