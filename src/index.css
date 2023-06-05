@@ -51,7 +51,6 @@ body {
   margin-top: 5rem;
   position: relative;
   width: 80%;
-  z-index: 1;
 }
 
 .landingPageImage {
@@ -264,7 +263,7 @@ a {
     padding-top: 1rem;
     position: fixed;
     text-align: center;
-    top: 3.25rem;
+    top: 3rem;
     transition: 0.3s;
     width: 100%;
   }
