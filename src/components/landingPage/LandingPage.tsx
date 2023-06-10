@@ -1,11 +1,13 @@
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import IYKYK from '../../images/AIKI-IYKYK.png';
 import OpenUp from '../../audio/OpenUp.mp3';
 import AccessGrantedComputerVoice from '../../audio/AccessGrantedComputerVoice.mp3';
 
 const LandingPage: React.FC = () => {
+  const navigate = useNavigate();
+
   const onLandingPageButtonClick = () => {
-    setTimeout(() => (window.location.href = './home'), 2000);
+    setTimeout(() => navigate('./home'), 2000);
 
     const audio = new Audio(OpenUp);
     const audio2 = new Audio(AccessGrantedComputerVoice);
@@ -20,9 +22,6 @@ const LandingPage: React.FC = () => {
     playAudio2();
   };
 
-  const landingPageButton = document.getElementById('landingPageButton');
-  landingPageButton?.addEventListener('click', onLandingPageButtonClick);
-
   return (
     <div className="landingPageContainer centered" id="landingPageContainer">
       <div className="landingPageTextContainer">
@@ -36,7 +35,11 @@ const LandingPage: React.FC = () => {
           knowledge, sharpen those ninja skills, and let's dive into the wild
           world of trivia together!
         </h2>
-        <button id="landingPageButton" className="button">
+        <button
+          id="landingPageButton"
+          className="button"
+          onClick={onLandingPageButtonClick}
+        >
           Get Your Quiz On!
         </button>
       </div>
