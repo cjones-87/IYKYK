@@ -1,46 +1,47 @@
-# All I Know Is, IYKYK by CJ Jones
-
 <!-- Header -->
 
 ![header](https://capsule-render.vercel.app/api?type=waving&color=0:301D42,10:553373,20:7a49a5,30:6D4194,40:A17FC0,50:C9B6DB,60:A17FC0,70:6D4194,80:7a49a5,90:553373,100:301D42&height=180&text=CJ%20Jones&fontAlignY=35&animation=scaleIn&desc=Software%20Engineer&descAlign=80&descAlignY=59&descSize=30)
 
-<!-- Technologies Used -->
+# All I Know Is, IYKYK by CJ Jones
 
-## Made With
+## Table of Contents
 
-<div align="center">  
-<h3>Frameworks, Languages, & Tools</h3>
-  <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40"/>
-  </a>
-  <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> 
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/>
-  </a> 
-  <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> 
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> 
-  </a>  
-  <a href="https://reactjs.org/" target="_blank" rel="noreferrer"> 
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/> 
-  </a> 
-   <div> 
-     <a href="https://vercel.com/" target="_blank" rel="noreferrer"> 
-        <img align="center" img src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/344/ffffff/external-glyph-shapes-tanah-basah-glyph-tanah-basah-69.png" width="35" height="35" alt='vercel'/> 
-     </a>
-   </div>
-</div>
+- [About](#about)
+- [Demo](#demo)
+<!-- - [Technologies Used](#technologies-used)
+- [App Features](#app-features)
+- [Accessibility Features](#accessibility-features) -->
 
-<!-- View Here -->
+## About
 
-## Check It Out
+IYKYK is a multiple choice quiz game where users can choose their quiz category preferences from a menu of options. Questions and answers are aggregated from an external API then formatted to meet the game's design.
 
-<div align="center">
-  <h3>All I Know Is, IYKYK</h3>
- <p>This project is my first attempt at implementing Typescript and should work in all modern browsers.</p>
- <p>View <img src="https://cdn-icons-png.flaticon.com/128/608/608258.png" alt="down arrow" width="15" height="15"/> Here</p>
- <a href="https://iykyk-two.vercel.app/" target="_blank" >
-         <img align="center" src="src/images/IYKYKhome.gif" alt="All I Know Is, IYKYK Quiz App"/>
-      </a>
-<div>
+## Demo
+
+![SiteLoop](https://i.imgur.com/mYnBu3I.gif)
+
+## Technologies Used
+
+### Front-end
+
+- react (v18.2.0) for building user interfaces in JavaScript
+- react-dom (v18.2.0) for rendering React components in the DOM
+- react-router-dom (v6.4.1) for routing in React applications
+- three (v0.146.0) for creating and displaying 3D graphics in the browser
+
+### Development
+
+- typescript (v4.8.3) for building large-scale JavaScript applications
+- web-vitals (v2.1.4) for measuring essential web performance metrics
+- @testing-library/jest-dom (v5.16.5) for testing DOM elements in Jest
+- @testing-library/react (v13.4.0) for testing React components with a user-friendly API
+- @testing-library/user-event (v13.5.0) for simulating user events in testing
+- @types/jest (v27.5.2) for TypeScript type definitions for Jest
+- @types/node (v16.11.60) for TypeScript type definitions for Node.js
+- @types/react (v18.0.21) for TypeScript type definitions for React
+- @types/react-dom (v18.0.6) for TypeScript type definitions for React DOM
+- postprocessing (v6.29.1) for post-processing effects in WebGL
+- @types/three (v0.146.0) for TypeScript type definitions for the Three.js library
 
 <!-- Footer -->
 
