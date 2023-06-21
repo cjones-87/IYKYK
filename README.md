@@ -8,9 +8,9 @@
 
 - [About](#about)
 - [Demo](#demo)
-<!-- - [Technologies Used](#technologies-used)
-- [App Features](#app-features)
-- [Accessibility Features](#accessibility-features) -->
+- [Technologies Used](#technologies-used)
+- [Site Features](#site-features)
+- [Accessibility Features](#accessibility-features)
 
 ## About
 
@@ -32,16 +32,32 @@ IYKYK is a multiple choice quiz game where users can choose their quiz category 
 ### Development
 
 - typescript (v4.8.3) for building large-scale JavaScript applications
-- web-vitals (v2.1.4) for measuring essential web performance metrics
-- @testing-library/jest-dom (v5.16.5) for testing DOM elements in Jest
-- @testing-library/react (v13.4.0) for testing React components with a user-friendly API
-- @testing-library/user-event (v13.5.0) for simulating user events in testing
-- @types/jest (v27.5.2) for TypeScript type definitions for Jest
 - @types/node (v16.11.60) for TypeScript type definitions for Node.js
 - @types/react (v18.0.21) for TypeScript type definitions for React
 - @types/react-dom (v18.0.6) for TypeScript type definitions for React DOM
 - postprocessing (v6.29.1) for post-processing effects in WebGL
 - @types/three (v0.146.0) for TypeScript type definitions for the Three.js library
+
+### Production
+
+- typescript (v4.8.3) for building large-scale JavaScript applications
+
+## Site Features
+
+- 3D animated graphics
+- Dynamic routing
+- Code splitting
+- Lazy loading
+- Responsive UI
+- Aggregating API questions/answers
+
+## Accessibility Features
+
+- Alt text for images/videos
+- Color contrast
+- Consistent/intuitive navigation
+- Resizable text and responsive design
+- Minimal blinking/flashing content
 
 <!-- Footer -->
 
