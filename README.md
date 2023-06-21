@@ -49,7 +49,9 @@ IYKYK is a multiple choice quiz game where users can choose their quiz category 
 - Code splitting
 - Lazy loading
 - Responsive UI
-- Aggregating API questions/answers
+- Quiz category preferences
+- Multiple choice format
+- External API integration
 
 ## Accessibility Features
 
