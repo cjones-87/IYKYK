@@ -9,8 +9,8 @@ const DarkModeToggle = () => {
       id="darkModeToggleButton"
       onClick={toggleDarkTheme}
       style={{
-        backgroundColor: darkTheme ? 'whitesmoke' : 'indigo',
-        color: darkTheme ? 'indigo' : 'whitesmoke',
+        backgroundColor: darkTheme ? 'rgba(0, 128, 0, 1)' : '#eef518',
+        color: darkTheme ? '#eef518' : 'rgba(0, 128, 0, 1)',
       }}
     >
       {darkTheme ? (
