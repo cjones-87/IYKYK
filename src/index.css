@@ -1,5 +1,5 @@
 body {
-  background: url('/public/questionMarkPortrait.png') no-repeat center fixed;
+  /* background: url('/public/questionMarkPortrait.png') no-repeat center fixed; */
   background-size: 100% 100%;
   font-family: 'Yanone Kaffeesatz', serif, monospace;
   margin: 0;
@@ -31,7 +31,7 @@ body {
 }
 
 .centered {
-  color: indigo;
+  /* color: indigo; */
   text-align: center;
   text-shadow: 0 0 12px #eef518;
 }
@@ -39,7 +39,7 @@ body {
 /* landing page */
 
 #landingPageContainer {
-  color: whitesmoke;
+  /* color: whitesmoke; */
   position: relative;
   text-shadow: 2px 2px 2px #4b0082;
 }
@@ -66,7 +66,7 @@ body {
 /* home page */
 
 #homeContainer {
-  color: whitesmoke;
+  /* color: whitesmoke; */
   margin: 0 auto;
   padding-top: 5rem;
   width: 75vw;
@@ -90,7 +90,7 @@ body {
 }
 
 #gameHeader {
-  color: whitesmoke;
+  /* color: whitesmoke; */
   font-size: 5rem;
   text-shadow: 2px 2px 2px #4b0082;
 }
@@ -132,16 +132,12 @@ a {
 
 .navbar {
   align-items: center;
-  background: radial-gradient(#eef518, rgba(64, 130, 109, 1));
   display: flex;
   justify-content: space-between;
   min-height: 4rem;
   position: sticky;
   top: 0;
-}
-
-.navbarLogo {
-  padding-left: 1em;
+  z-index: 1;
 }
 
 .navMenu {
@@ -188,6 +184,23 @@ a {
   -webkit-transition: all 0.3s ease;
 }
 
+#navbarEnd {
+  align-items: center;
+  padding-right: 2rem;
+}
+
+#navbarStart {
+  align-items: center;
+  display: flex;
+  padding-left: 1rem;
+}
+
+#darkModeToggleButton {
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+}
+
 /* quiz */
 
 .answerSpan {
@@ -222,8 +235,9 @@ a {
 
 .pBackground {
   background: radial-gradient(#eef518, rgba(64, 130, 109, 1));
-  border: red 3px groove;
+  border: indigo 3px groove;
   border-radius: 10px;
+  color: indigo;
   display: flex;
   font-size: 2rem;
   justify-content: center;
@@ -231,7 +245,7 @@ a {
   margin-top: 50px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 869px) {
   .navbar {
     left: 0;
     position: sticky;
@@ -275,9 +289,13 @@ a {
   .navMenu.active {
     left: -5%;
   }
+
+  .barGroup {
+    padding-left: 1rem;
+  }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 870px) {
   .landingPageContainer {
     flex-direction: row;
     align-items: center;
