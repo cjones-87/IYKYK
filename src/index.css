@@ -1,5 +1,4 @@
 body {
-  /* background: url('/public/questionMarkPortrait.png') no-repeat center fixed; */
   background-size: 100% 100%;
   font-family: 'Yanone Kaffeesatz', serif, monospace;
   margin: 0;
@@ -31,7 +30,6 @@ body {
 }
 
 .centered {
-  /* color: indigo; */
   text-align: center;
   text-shadow: 0 0 12px #eef518;
 }
@@ -39,7 +37,6 @@ body {
 /* landing page */
 
 #landingPageContainer {
-  /* color: whitesmoke; */
   position: relative;
   text-shadow: 2px 2px 2px #4b0082;
 }
@@ -66,7 +63,6 @@ body {
 /* home page */
 
 #homeContainer {
-  /* color: whitesmoke; */
   margin: 0 auto;
   padding-top: 5rem;
   width: 75vw;
@@ -90,7 +86,6 @@ body {
 }
 
 #gameHeader {
-  /* color: whitesmoke; */
   font-size: 5rem;
   text-shadow: 2px 2px 2px #4b0082;
 }
