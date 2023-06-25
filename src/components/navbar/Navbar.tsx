@@ -1,9 +1,19 @@
-import { useCallback, useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import NavbarData from './data/NavbarData';
-import NavbarLogo from './NavbarLogo';
+import { useCallback, useEffect, useState, FC, ReactNode } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { NavbarObject } from '../../utils/utils';
+import useTheme from '../../customHooks/useTheme';
 
-const Navbar = () => {
+interface NavbarProps {
+  end: ReactNode;
+  navLinks: Array<NavbarObject>;
+  start: ReactNode;
+}
+
+const Navbar: FC<NavbarProps> = ({ end, navLinks, start }) => {
+  const { darkTheme } = useTheme();
+
+  const navigate = useNavigate();
+
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
@@ -15,9 +25,13 @@ const Navbar = () => {
     setBurgerActive((current) => !current);
   }, []);
 
-  const handleNavLinkClick = useCallback(() => {
-    setBurgerActive((current) => !current);
-  }, []);
+  const handleNavLinkClick = useCallback(
+    (href: string) => {
+      navigate(href);
+      setBurgerActive((current) => !current);
+    },
+    [navigate]
+  );
 
   useEffect(() => {
     const handleResize = () => {
@@ -34,18 +48,26 @@ const Navbar = () => {
   }, [dimensions.height, dimensions.width]);
 
   return (
-    <div style={{ width: dimensions.width }}>
-      <nav className="navbar">
-        <NavLink className="navbarLogo" to="/">
-          <NavbarLogo />
-        </NavLink>
-
+    <nav
+      className="navbar"
+      style={{
+        background: !darkTheme
+          ? `radial-gradient(rgba(0, 128, 0, 1), rgba(0, 0, 0, 1))`
+          : `radial-gradient(#eef518, rgba(64, 130, 109, 1))`,
+        width: dimensions.width,
+      }}
+    >
+      <div id="navbarStart">
+        {start}
         <ul className={`navMenu ${burgerActive ? 'active' : ''}`}>
-          {NavbarData.map((data, index) => (
+          {navLinks.map((data, index) => (
             <li className="navItem" key={index}>
-              <NavLink to={data.href} onClick={handleNavLinkClick}>
-                <button className="navLink button">{data.content}</button>
-              </NavLink>
+              <button
+                className="navLink button"
+                onClick={() => handleNavLinkClick(data.href)}
+              >
+                {data.content}
+              </button>
             </li>
           ))}
         </ul>
@@ -59,8 +81,10 @@ const Navbar = () => {
             <span className="bar"></span>
           </div>
         </div>
-      </nav>
-    </div>
+      </div>
+
+      <div>{end}</div>
+    </nav>
   );
 };
 
