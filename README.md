@@ -11,6 +11,7 @@
 - [Technologies Used](#technologies-used)
 - [Site Features](#site-features)
 - [Accessibility Features](#accessibility-features)
+- [Contact](#contact)
 
 ## About
 
@@ -60,6 +61,14 @@ IYKYK is a multiple choice quiz game where users can choose their quiz category 
 - Consistent/intuitive navigation
 - Resizable text and responsive design
 - Minimal blinking/flashing content
+
+## Contact
+
+You can reach out to me via email at cj@seejonesengineer.com
+
+Connect with me on LinkedIn: https://www.linkedin.com/in/cjones1827/
+
+Visit my portfolio website: https://www.seejonesengineer.com/
 
 <!-- Footer -->
 
