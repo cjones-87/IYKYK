@@ -50,11 +50,11 @@ const LandingPageLogo = () => {
     scene.add(spotLight);
 
     const sphereGeometry =
-      width > 644
+      width > 830
         ? new THREE.SphereGeometry(64, 64, 64)
         : width > 500
-        ? new THREE.SphereGeometry(48, 64, 64)
-        : new THREE.SphereGeometry(32, 64, 64);
+        ? new THREE.SphereGeometry(32, 64, 64)
+        : new THREE.SphereGeometry(16, 64, 64);
 
     const texture = new THREE.TextureLoader().load(IYKYK);
     texture.wrapS = THREE.RepeatWrapping;
@@ -72,20 +72,26 @@ const LandingPageLogo = () => {
     const bounceSpeed = 0.5;
     const bounceDistance = width < 870 ? 40 : 30;
 
-    sphereMesh.userData = { direction: 1 };
+    sphereMesh.userData.direction = 1;
 
     const animate = () => {
       sphereMesh.rotation.y += rotationSpeed;
 
-      console.log(sphereMesh.position, -bounceDistance / 2);
-
-      if (sphereMesh.position.y <= -bounceDistance / 2) {
-        sphereMesh.userData.direction = 1;
-      } else if (sphereMesh.position.y >= bounceDistance / 2) {
-        sphereMesh.userData.direction = -1;
+      if (width >= 870) {
+        if (sphereMesh.position.y <= -bounceDistance / 2) {
+          sphereMesh.userData.direction = 1;
+        } else if (sphereMesh.position.y >= bounceDistance / 2) {
+          sphereMesh.userData.direction = -1;
+        }
+        sphereMesh.position.y += bounceSpeed * sphereMesh.userData.direction;
+      } else {
+        if (sphereMesh.position.x <= -bounceDistance / 2) {
+          sphereMesh.userData.direction = 1;
+        } else if (sphereMesh.position.x >= bounceDistance / 2) {
+          sphereMesh.userData.direction = -1;
+        }
+        sphereMesh.position.x += bounceSpeed * sphereMesh.userData.direction;
       }
-
-      sphereMesh.position.y += bounceSpeed * sphereMesh.userData.direction;
 
       renderer.render(scene, camera);
       window.requestAnimationFrame(animate);
