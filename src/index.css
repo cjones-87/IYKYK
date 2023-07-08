@@ -37,27 +37,33 @@ body {
 /* landing page */
 
 #landingPageContainer {
-  position: relative;
+  align-items: center;
+  justify-content: center;
+  left: 30%;
+  max-width: 80%;
+  position: absolute;
   text-shadow: 2px 2px 2px #4b0082;
 }
 
 .landingPageContainer {
+  align-items: center;
   display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  margin-top: 5rem;
-  position: relative;
-  width: 80%;
+  flex-direction: row;
+  justify-content: center;
+  position: absolute;
 }
 
-.landingPageImage {
-  border-radius: 50%;
-  height: auto;
-  max-width: 100%;
+.landingPageTextContainer {
+  min-width: 75%;
 }
 
 #landingPageButton {
   position: relative;
+}
+
+#landingPageLogoContainer {
+  display: flex;
+  justify-content: center;
 }
 
 /* home page */
@@ -187,7 +193,7 @@ a {
 #navbarStart {
   align-items: center;
   display: flex;
-  padding-left: 1rem;
+  padding-left: 1.5rem;
 }
 
 #darkModeToggleButton {
@@ -288,20 +294,11 @@ a {
   .barGroup {
     padding-left: 1rem;
   }
-}
 
-@media screen and (min-width: 870px) {
-  .landingPageContainer {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .landingPageTextContainer {
-    flex: 1;
-    padding-right: 20px;
-  }
-
-  .landingPageImageContainer {
-    flex: 1;
+  #landingPageContainer {
+    flex-direction: column;
+    left: 5%;
+    margin-top: 15%;
+    min-width: 90%;
   }
 }
