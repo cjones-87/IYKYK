@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import IYKYK from '../../images/AIKI-IYKYK.png';
+import useWindowDimensions from '../../customHooks/useWindowDimensions';
 import OpenUp from '../../audio/OpenUp.mp3';
 import AccessGrantedComputerVoice from '../../audio/AccessGrantedComputerVoice.mp3';
+import LandingPageLogo from './LandingPageLogo';
 
 const LandingPage: React.FC = () => {
+  const { width } = useWindowDimensions();
   const navigate = useNavigate();
 
   const onLandingPageButtonClick = () => {
@@ -23,7 +25,11 @@ const LandingPage: React.FC = () => {
   };
 
   return (
-    <div className="landingPageContainer centered" id="landingPageContainer">
+    <div
+      className="landingPageContainer centered"
+      id="landingPageContainer"
+      style={{ width: width / 2 }}
+    >
       <div className="landingPageTextContainer">
         <h1 className="welcomeText">
           Get Your Brain Poppin' with Trivia Quizzes! Unlock Your Genius with
@@ -44,12 +50,8 @@ const LandingPage: React.FC = () => {
         </button>
       </div>
 
-      <div className="landingPageImageContainer">
-        <img
-          src={IYKYK}
-          alt="Head Silhouette, AIKI IYKYK Logo"
-          className="landingPageImage"
-        />
+      <div style={{ width: width + 20 }}>
+        <LandingPageLogo />
       </div>
     </div>
   );
