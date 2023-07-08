@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useState, FC, ReactNode } from 'react';
+import { useCallback, useState, FC, ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NavbarObject } from '../../utils/utils';
 import useTheme from '../../customHooks/useTheme';
+import useWindowDimensions from '../../customHooks/useWindowDimensions';
 
 interface NavbarProps {
   end: ReactNode;
@@ -11,13 +12,9 @@ interface NavbarProps {
 
 const Navbar: FC<NavbarProps> = ({ end, navLinks, start }) => {
   const { darkTheme } = useTheme();
+  const { width } = useWindowDimensions();
 
   const navigate = useNavigate();
-
-  const [dimensions, setDimensions] = useState({
-    height: window.innerHeight,
-    width: window.innerWidth,
-  });
 
   const [burgerActive, setBurgerActive] = useState(false);
 
@@ -33,20 +30,6 @@ const Navbar: FC<NavbarProps> = ({ end, navLinks, start }) => {
     [navigate]
   );
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 767) setBurgerActive(false);
-
-      setDimensions({
-        height: window.innerHeight,
-        width: window.innerWidth,
-      });
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [dimensions.height, dimensions.width]);
-
   return (
     <nav
       className="navbar"
@@ -54,7 +37,7 @@ const Navbar: FC<NavbarProps> = ({ end, navLinks, start }) => {
         background: !darkTheme
           ? `radial-gradient(rgba(0, 128, 0, 1), rgba(0, 0, 0, 1))`
           : `radial-gradient(#eef518, rgba(64, 130, 109, 1))`,
-        width: dimensions.width,
+        width,
       }}
     >
       <div id="navbarStart">
