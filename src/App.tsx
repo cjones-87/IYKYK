@@ -17,6 +17,7 @@ const Computers = lazy(() => import('./components/computers/Computers'));
 const Mathematics = lazy(() => import('./components/mathematics/Mathematics'));
 const Music = lazy(() => import('./components/music/Music'));
 const Vehicles = lazy(() => import('./components/vehicles/Vehicles'));
+const Footer = lazy(() => import('./components/footer/Footer'));
 
 export const Loading = () => (
   <div
@@ -48,7 +49,7 @@ const ErrorFallback = () => (
 );
 
 const end = (
-  <div id="navbarEnd">
+  <div id='navbarEnd'>
     <ErrorBoundary fallback={<ErrorFallback />}>
       <Suspense fallback={<Loading />}>
         <DarkModeToggle />
@@ -58,7 +59,7 @@ const end = (
 );
 
 const start = (
-  <NavLink to="/">
+  <NavLink to='/'>
     <ErrorBoundary fallback={<ErrorFallback />}>
       <Suspense fallback={<Loading />}>
         <NavbarLogo />
@@ -78,7 +79,7 @@ const App = () => {
             ? 'radial-gradient(rgba(0, 128, 0, 1), rgba(0, 0, 0, 1))'
             : 'radial-gradient(rgba(238, 245, 24, 1), rgba(64, 130, 109, 1))',
           color: darkTheme ? '#eef518' : 'whitesmoke',
-          height: '150vh',
+          height: '100vh',
         }}
       >
         <ErrorBoundary fallback={<ErrorFallback />}>
@@ -89,7 +90,7 @@ const App = () => {
         <Suspense fallback={<Loading />}>
           <Routes>
             <Route
-              path="/"
+              path='/'
               element={
                 <ErrorBoundary fallback={<ErrorFallback />}>
                   <Suspense fallback={<Loading />}>
@@ -98,8 +99,9 @@ const App = () => {
                 </ErrorBoundary>
               }
             />
+
             <Route
-              path="/home"
+              path='/home'
               element={
                 <ErrorBoundary fallback={<ErrorFallback />}>
                   <Suspense fallback={<Loading />}>
@@ -108,8 +110,9 @@ const App = () => {
                 </ErrorBoundary>
               }
             />
+
             <Route
-              path="/anime"
+              path='/anime'
               element={
                 <ErrorBoundary fallback={<ErrorFallback />}>
                   <Suspense fallback={<Loading />}>
@@ -118,8 +121,9 @@ const App = () => {
                 </ErrorBoundary>
               }
             />
+
             <Route
-              path="/cartoons"
+              path='/cartoons'
               element={
                 <ErrorBoundary fallback={<ErrorFallback />}>
                   <Suspense fallback={<Loading />}>
@@ -128,8 +132,9 @@ const App = () => {
                 </ErrorBoundary>
               }
             />
+
             <Route
-              path="/comics"
+              path='/comics'
               element={
                 <ErrorBoundary fallback={<ErrorFallback />}>
                   <Suspense fallback={<Loading />}>
@@ -138,8 +143,9 @@ const App = () => {
                 </ErrorBoundary>
               }
             />
+
             <Route
-              path="/computers"
+              path='/computers'
               element={
                 <ErrorBoundary fallback={<ErrorFallback />}>
                   <Suspense fallback={<Loading />}>
@@ -148,8 +154,9 @@ const App = () => {
                 </ErrorBoundary>
               }
             />
+
             <Route
-              path="/mathematics"
+              path='/mathematics'
               element={
                 <ErrorBoundary fallback={<ErrorFallback />}>
                   <Suspense fallback={<Loading />}>
@@ -158,8 +165,9 @@ const App = () => {
                 </ErrorBoundary>
               }
             />
+
             <Route
-              path="/music"
+              path='/music'
               element={
                 <ErrorBoundary fallback={<ErrorFallback />}>
                   <Suspense fallback={<Loading />}>
@@ -168,8 +176,9 @@ const App = () => {
                 </ErrorBoundary>
               }
             />
+
             <Route
-              path="/vehicles"
+              path='/vehicles'
               element={
                 <ErrorBoundary fallback={<ErrorFallback />}>
                   <Suspense fallback={<Loading />}>
@@ -180,6 +189,12 @@ const App = () => {
             />
           </Routes>
         </Suspense>
+
+        <ErrorBoundary fallback={<ErrorFallback />}>
+          <Suspense fallback={<Loading />}>
+            <Footer />
+          </Suspense>
+        </ErrorBoundary>
       </div>
     </BrowserRouter>
   );
