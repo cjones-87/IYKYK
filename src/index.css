@@ -2,6 +2,8 @@ body {
   background-size: 100% 100%;
   font-family: 'Yanone Kaffeesatz', serif, monospace;
   margin: 0;
+  overflow-x: hidden;
+  padding: 0;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
@@ -138,6 +140,7 @@ a {
   min-height: 4rem;
   position: sticky;
   top: 0;
+  width: 100%;
   z-index: 1;
 }
 
@@ -187,7 +190,7 @@ a {
 
 #navbarEnd {
   align-items: center;
-  padding-right: 2rem;
+  padding-right: 1.25rem;
 }
 
 #navbarStart {
@@ -244,6 +247,42 @@ a {
   justify-content: center;
   margin: auto;
   margin-top: 50px;
+}
+
+/* footer */
+
+#footer {
+  bottom: 0;
+  color: indigo;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+#footerIcons {
+  display: flex;
+  filter: drop-shadow(0 1px 1px whitesmoke);
+  justify-content: space-evenly;
+  text-shadow: 2px 2px 2px indigo;
+}
+
+#footerText {
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: center;
+  text-align: center;
+  text-shadow: 1px 1px 1px whitesmoke;
+}
+
+#websiteCredit {
+  color: whitesmoke;
+  text-decoration: none;
+  text-shadow: 1px 1px 1px indigo;
 }
 
 @media screen and (max-width: 869px) {
