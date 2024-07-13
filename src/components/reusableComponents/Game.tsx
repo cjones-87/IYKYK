@@ -4,7 +4,6 @@ import GameCard from './GameCard';
 
 import {
   AnswerObject,
-  Difficulty,
   GameProps,
   QuestionState,
   TotalQuestions,
@@ -18,6 +17,7 @@ const Game: React.FC<GameProps> = ({ category, header, type }) => {
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [score, setScore] = useState(0);
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
+  const [difficulty, setDifficulty] = useState('medium');
 
   const startTrivia = async () => {
     setLoading(true);
@@ -25,7 +25,7 @@ const Game: React.FC<GameProps> = ({ category, header, type }) => {
     //need to implement try catch
     const newQuestions = await fetchAPIQuizQuestions(
       TotalQuestions,
-      Difficulty.MEDIUM,
+      difficulty,
       category,
       type
     );
@@ -64,19 +64,53 @@ const Game: React.FC<GameProps> = ({ category, header, type }) => {
       : setNumber(next_Question);
   };
 
+  const handleDifficultyChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const value: string = event.target.value;
+
+    setDifficulty(value);
+  };
+
   return (
-    <div className="centered">
-      <h1 id="gameHeader" style={{ display: gameOver ? 'block' : 'none' }}>
+    <div className='centered'>
+      <h1 id='gameHeader' style={{ display: gameOver ? 'block' : 'none' }}>
         {header}
       </h1>
 
       {gameOver || userAnswers.length === TotalQuestions ? (
-        <button className="start button" onClick={startTrivia}>
-          Start Game
-        </button>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem',
+          }}
+        >
+          <h2 style={{ textShadow: '2px 2px 2px black' }}>
+            Choose your difficulty level
+          </h2>
+          <select
+            value={difficulty}
+            onChange={handleDifficultyChange}
+            style={{ margin: 'auto' }}
+          >
+            <option value={'easy'}>EASY</option>
+            <option value={'medium'}>MEDIUM</option>
+            <option value={'hard'}>HARD</option>
+          </select>
+
+          <button
+            className='start button'
+            onClick={startTrivia}
+            style={{ margin: 'auto' }}
+            title='press here to start'
+          >
+            Start Game
+          </button>
+        </div>
       ) : null}
       {!gameOver ? (
-        <p className="score">Score: {(score / TotalQuestions) * 100}%</p>
+        <p className='score'>Score: {(score / TotalQuestions) * 100}%</p>
       ) : null}
       {loading ? <p>Loading Questions {'\n'} Please Wait ...</p> : null}
       {!loading && !gameOver ? (
@@ -93,7 +127,7 @@ const Game: React.FC<GameProps> = ({ category, header, type }) => {
       !loading &&
       userAnswers.length === number + 1 &&
       number !== TotalQuestions - 1 ? (
-        <button className="next button" onClick={nextQuestion}>
+        <button className='next button' onClick={nextQuestion}>
           Next Question
         </button>
       ) : null}
