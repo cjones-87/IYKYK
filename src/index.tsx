@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import LightDarkThemeContext from './context/LightDarkThemeContext';
+import QuizContext from './context/QuizContext';
 import App from './App';
 import './index.css';
 
@@ -11,7 +12,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <StrictMode>
     <LightDarkThemeContext>
-      <App />
+      <QuizContext>
+        <App />
+      </QuizContext>
     </LightDarkThemeContext>
   </StrictMode>
 );
