@@ -20,12 +20,6 @@ export type Question = {
 
 export type QuestionState = Question & { answers: string[] };
 
-export enum Difficulty {
-  EASY = 'easy',
-  MEDIUM = 'medium',
-  HARD = 'hard',
-}
-
 export type AnswerObject = {
   answer: string;
   correct: boolean;
