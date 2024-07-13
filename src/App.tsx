@@ -4,6 +4,7 @@ import ErrorBoundary from './errorHandling/ErrorBoundary';
 import useTheme from './customHooks/useTheme';
 import NavbarData from './components/navbar/data/NavbarData';
 
+const QuizTypeToggle = lazy(() => import('./components/navbar/QuizTypeToggle'));
 const DarkModeToggle = lazy(() => import('./components/navbar/DarkModeToggle'));
 const NavbarLogo = lazy(() => import('./components/navbar/NavbarLogo'));
 const Spinner = lazy(() => import('./utils/Spinner'));
@@ -44,12 +45,24 @@ const ErrorFallback = () => (
   >
     <h1>Oops! Something went wrong.</h1>
     <p>Please try again later.</p>
-    <button onClick={window.location.reload}>Refresh Page</button>
+    <button onClick={() => window.location.reload()}>Refresh Page</button>
   </div>
 );
 
 const end = (
-  <div id='navbarEnd'>
+  <div id='navbarEnd' style={{ color: 'whitesmoke' }}>
+    <span style={{ paddingRight: '1rem', textShadow: '2px 2px 2px black' }}>
+      switch your quiz type
+    </span>
+    <ErrorBoundary fallback={<ErrorFallback />}>
+      <Suspense fallback={<Loading />}>
+        <QuizTypeToggle />
+      </Suspense>
+    </ErrorBoundary>
+
+    <span style={{ paddingRight: '1rem', textShadow: '2px 2px 2px black' }}>
+      switch light/dark mode
+    </span>
     <ErrorBoundary fallback={<ErrorFallback />}>
       <Suspense fallback={<Loading />}>
         <DarkModeToggle />
