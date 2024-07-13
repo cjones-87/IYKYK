@@ -8,20 +8,16 @@ export interface ThemeProps {
 export const ThemeContext = createContext<ThemeProps | null>(null);
 
 const LightDarkThemeContext = ({ children }: { children: ReactNode }) => {
-  const [darkTheme, setDarkTheme] = useState(false);
+  const [darkTheme, setDarkTheme] = useState(() => {
+    const storedTheme = localStorage.getItem('colorTheme');
+    return storedTheme ? JSON.parse(storedTheme) : false;
+  });
 
-  const toggleDarkTheme = (): void => setDarkTheme((current) => !current);
-
-  useEffect(() => {
-    const storedTheme = localStorage.getItem('iykykColorTheme');
-
-    if (storedTheme) {
-      setDarkTheme(JSON.parse(storedTheme));
-    }
-  }, []);
+  const toggleDarkTheme = (): void =>
+    setDarkTheme((current: boolean) => !current);
 
   useEffect(
-    () => localStorage.setItem('iykykColorTheme', JSON.stringify(darkTheme)),
+    () => localStorage.setItem('colorTheme', JSON.stringify(darkTheme)),
     [darkTheme]
   );
 
