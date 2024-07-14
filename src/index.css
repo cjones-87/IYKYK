@@ -200,6 +200,32 @@ a {
   padding-left: 1.5rem;
 }
 
+/* navbar dropdown */
+.navItem {
+  position: relative;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: black;
+  border: 1px solid indigo;
+  text-align: left;
+  width: max-content;
+  z-index: 10;
+}
+
+.dropdownMenu li {
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  margin-left: -2.5rem;
+  cursor: pointer;
+}
+
+.dropdownMenu li:hover {
+  background: indigo;
+}
+
 /* The switchbox around the toggle */
 .switch {
   position: relative;
@@ -375,7 +401,7 @@ input:checked + .slider:before {
   text-shadow: 1px 1px 1px indigo;
 }
 
-@media screen and (max-width: 869px) {
+@media screen and (max-width: 1298px) {
   .navbar {
     left: 0;
     position: sticky;

@@ -1,4 +1,9 @@
-import { useCallback, useState, FC, ReactNode } from 'react';
+import React, {
+  useCallback,
+  useState,
+  startTransition,
+  ReactNode,
+} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NavbarObject } from '../../utils/utils';
 import useTheme from '../../customHooks/useTheme';
@@ -9,12 +14,11 @@ interface NavbarProps {
   start: ReactNode;
 }
 
-const Navbar: FC<NavbarProps> = ({ end, navLinks, start }) => {
+const Navbar: React.FC<NavbarProps> = ({ end, navLinks, start }) => {
   const { darkTheme } = useTheme();
-
   const navigate = useNavigate();
-
   const [burgerActive, setBurgerActive] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
 
   const handleBurgerClick = useCallback(() => {
     setBurgerActive((current) => !current);
@@ -22,11 +26,25 @@ const Navbar: FC<NavbarProps> = ({ end, navLinks, start }) => {
 
   const handleNavLinkClick = useCallback(
     (href: string) => {
-      navigate(href);
-      setBurgerActive((current) => !current);
+      startTransition(() => {
+        navigate(href);
+        setBurgerActive((current) => !current);
+      });
     },
     [navigate]
   );
+
+  const handleSubNavLinkClick = useCallback(
+    (href: string, event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+      event.stopPropagation();
+      handleNavLinkClick(href);
+    },
+    [handleNavLinkClick]
+  );
+
+  const handleDropdownToggle = (header: string) => {
+    setDropdownOpen((current) => (current === header ? null : header));
+  };
 
   return (
     <nav
@@ -41,13 +59,28 @@ const Navbar: FC<NavbarProps> = ({ end, navLinks, start }) => {
         {start}
         <ul className={`navMenu ${burgerActive ? 'active' : ''}`}>
           {navLinks.map((data, index) => (
-            <li className='navItem' key={index}>
-              <button
-                className='navLink button'
-                onClick={() => handleNavLinkClick(data.href)}
-              >
-                {data.content}
-              </button>
+            <li
+              className='navItem'
+              key={index}
+              onClick={() => handleNavLinkClick(data.href)}
+              onMouseEnter={() => handleDropdownToggle(data.header)}
+              onMouseLeave={() => handleDropdownToggle(data.header)}
+            >
+              <button className='navLink button'>{data.header}</button>
+              {data.dropdown && dropdownOpen === data.header && (
+                <ul className='dropdownMenu'>
+                  {data.options?.map((option, idx) => (
+                    <li
+                      key={idx}
+                      onClick={(event) =>
+                        handleSubNavLinkClick(option.href, event)
+                      }
+                    >
+                      {option.content}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>
@@ -62,7 +95,6 @@ const Navbar: FC<NavbarProps> = ({ end, navLinks, start }) => {
           </div>
         </div>
       </div>
-
       <div>{end}</div>
     </nav>
   );

@@ -1,8 +1,3 @@
-export interface Dimensions {
-  height: number;
-  width: number;
-}
-
 export interface GameProps {
   category: number;
   header: string;
@@ -54,6 +49,13 @@ export const shuffleArray = (array: string[]): string[] => {
 };
 
 export type NavbarObject = {
-  content: string;
+  header: string;
   href: string;
+  dropdown: boolean;
+  options?: { content: string; href: string }[];
+};
+
+export type CategoryPageProps = {
+  header: string;
+  listItems: { content: string; href: string }[];
 };

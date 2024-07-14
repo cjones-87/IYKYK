@@ -86,7 +86,7 @@ const Game: React.FC<GameProps> = ({ category, header, type }) => {
             gap: '1rem',
           }}
         >
-          <h2 style={{ textShadow: '2px 2px 2px black' }}>
+          <h2 style={{ textShadow: '2px 2px 2px indigo' }}>
             Choose your difficulty level
           </h2>
           <select
