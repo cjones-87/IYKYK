@@ -1,10 +1,21 @@
-import { useNavigate } from 'react-router-dom';
+import React, { useCallback } from 'react';
 import useWindowDimensions from '../../customHooks/useWindowDimensions';
 import LandingPageLogo from './LandingPageLogo';
 
-const LandingPage: React.FC = () => {
+interface LandingPageProps {
+  setShowHomePage: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const LandingPage: React.FC<LandingPageProps> = ({ setShowHomePage }) => {
   const { width } = useWindowDimensions();
-  const navigate = useNavigate();
+
+  const handleButtonClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      setShowHomePage(true);
+    },
+    [setShowHomePage]
+  );
 
   return (
     <div
@@ -26,7 +37,7 @@ const LandingPage: React.FC = () => {
         <button
           id='landingPageButton'
           className='button'
-          onClick={() => navigate('./home')}
+          onClick={handleButtonClick}
         >
           Get Your Quiz On!
         </button>
