@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, startTransition, useState, Suspense } from 'react';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import ErrorBoundary from './errorHandling/ErrorBoundary';
 import useTheme from './customHooks/useTheme';
@@ -11,13 +11,106 @@ const Spinner = lazy(() => import('./utils/Spinner'));
 const Navbar = lazy(() => import('./components/navbar/Navbar'));
 const LandingPage = lazy(() => import('./components/landingPage/LandingPage'));
 const Home = lazy(() => import('./components/home/Home'));
-const Anime = lazy(() => import('./components/anime/Anime'));
-const Cartoons = lazy(() => import('./components/cartoons/Cartoons'));
-const Comics = lazy(() => import('./components/comics/Comics'));
-const Computers = lazy(() => import('./components/computers/Computers'));
-const Mathematics = lazy(() => import('./components/mathematics/Mathematics'));
-const Music = lazy(() => import('./components/music/Music'));
-const Vehicles = lazy(() => import('./components/vehicles/Vehicles'));
+
+// entertainment
+const Entertainment = lazy(
+  () => import('./components/gameCategories/entertainment/Entertainment')
+);
+const Anime = lazy(
+  () => import('./components/gameCategories/entertainment/Anime')
+);
+const BoardGames = lazy(
+  () => import('./components/gameCategories/entertainment/BoardGames')
+);
+const Books = lazy(
+  () => import('./components/gameCategories/entertainment/Books')
+);
+const Cartoons = lazy(
+  () => import('./components/gameCategories/entertainment/Cartoons')
+);
+const Comics = lazy(
+  () => import('./components/gameCategories/entertainment/Comics')
+);
+const Film = lazy(
+  () => import('./components/gameCategories/entertainment/Film')
+);
+const Music = lazy(
+  () => import('./components/gameCategories/entertainment/Music')
+);
+const MusicalsAndTheater = lazy(
+  () => import('./components/gameCategories/entertainment/MusicalsAndTheater')
+);
+const Television = lazy(
+  () => import('./components/gameCategories/entertainment/Television')
+);
+const VideoGames = lazy(
+  () => import('./components/gameCategories/entertainment/VideoGames')
+);
+
+// environment
+const Environment = lazy(
+  () => import('./components/gameCategories/environment/Environment')
+);
+const Animals = lazy(
+  () => import('./components/gameCategories/environment/Animals')
+);
+const Geography = lazy(
+  () => import('./components/gameCategories/environment/Geography')
+);
+
+// misc
+const Misc = lazy(() => import('./components/gameCategories/misc/Misc'));
+const Random = lazy(() => import('./components/gameCategories/misc/Random'));
+const GeneralKnowledge = lazy(
+  () => import('./components/gameCategories/misc/GeneralKnowledge')
+);
+
+// pop culture
+const PopCulture = lazy(
+  () => import('./components/gameCategories/popCulture/PopCulture')
+);
+const Celebrities = lazy(
+  () => import('./components/gameCategories/popCulture/Celebrities')
+);
+const Sports = lazy(
+  () => import('./components/gameCategories/popCulture/Sports')
+);
+const Vehicles = lazy(
+  () => import('./components/gameCategories/popCulture/Vehicles')
+);
+
+// science
+const Science = lazy(
+  () => import('./components/gameCategories/science/Science')
+);
+const Computers = lazy(
+  () => import('./components/gameCategories/science/Computers')
+);
+const Gadgets = lazy(
+  () => import('./components/gameCategories/science/Gadgets')
+);
+const Mathematics = lazy(
+  () => import('./components/gameCategories/science/Mathematics')
+);
+const ScienceAndNature = lazy(
+  () => import('./components/gameCategories/science/ScienceAndNature')
+);
+
+// social science
+const SocialScience = lazy(
+  () => import('./components/gameCategories/socialScience/SocialScience')
+);
+const Art = lazy(() => import('./components/gameCategories/socialScience/Art'));
+const History = lazy(
+  () => import('./components/gameCategories/socialScience/History')
+);
+const Mythology = lazy(
+  () => import('./components/gameCategories/socialScience/Mythology')
+);
+const Politics = lazy(
+  () => import('./components/gameCategories/socialScience/Politics')
+);
+
 const Footer = lazy(() => import('./components/footer/Footer'));
 
 export const Loading = () => (
@@ -51,7 +144,7 @@ const ErrorFallback = () => (
 
 const end = (
   <div id='navbarEnd' style={{ color: 'whitesmoke' }}>
-    <span style={{ paddingRight: '1rem', textShadow: '2px 2px 2px black' }}>
+    <span style={{ paddingRight: '1rem', textShadow: '2px 2px 2px indigo' }}>
       switch your quiz type
     </span>
     <ErrorBoundary fallback={<ErrorFallback />}>
@@ -60,7 +153,7 @@ const end = (
       </Suspense>
     </ErrorBoundary>
 
-    <span style={{ paddingRight: '1rem', textShadow: '2px 2px 2px black' }}>
+    <span style={{ paddingRight: '1rem', textShadow: '2px 2px 2px indigo' }}>
       switch light/dark mode
     </span>
     <ErrorBoundary fallback={<ErrorFallback />}>
@@ -83,6 +176,13 @@ const start = (
 
 const App = () => {
   const { darkTheme } = useTheme();
+  const [showHomePage, setShowHomePage] = useState(false);
+
+  const toggleHomePage = () => {
+    startTransition(() => {
+      setShowHomePage((prev) => !prev);
+    });
+  };
 
   return (
     <BrowserRouter>
@@ -107,25 +207,29 @@ const App = () => {
               element={
                 <ErrorBoundary fallback={<ErrorFallback />}>
                   <Suspense fallback={<Loading />}>
-                    <LandingPage />
+                    {showHomePage ? (
+                      <Home />
+                    ) : (
+                      <LandingPage setShowHomePage={toggleHomePage} />
+                    )}
                   </Suspense>
                 </ErrorBoundary>
               }
             />
 
+            {/* entertainment */}
             <Route
-              path='/home'
+              path='/entertainment'
               element={
                 <ErrorBoundary fallback={<ErrorFallback />}>
                   <Suspense fallback={<Loading />}>
-                    <Home />
+                    <Entertainment />
                   </Suspense>
                 </ErrorBoundary>
               }
             />
-
             <Route
-              path='/anime'
+              path='/entertainment/anime_&_manga'
               element={
                 <ErrorBoundary fallback={<ErrorFallback />}>
                   <Suspense fallback={<Loading />}>
@@ -134,9 +238,28 @@ const App = () => {
                 </ErrorBoundary>
               }
             />
-
             <Route
-              path='/cartoons'
+              path='/entertainment/board_games'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <BoardGames />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path='/entertainment/books'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <Books />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path='/entertainment/cartoons'
               element={
                 <ErrorBoundary fallback={<ErrorFallback />}>
                   <Suspense fallback={<Loading />}>
@@ -145,9 +268,8 @@ const App = () => {
                 </ErrorBoundary>
               }
             />
-
             <Route
-              path='/comics'
+              path='/entertainment/comics'
               element={
                 <ErrorBoundary fallback={<ErrorFallback />}>
                   <Suspense fallback={<Loading />}>
@@ -156,31 +278,18 @@ const App = () => {
                 </ErrorBoundary>
               }
             />
-
             <Route
-              path='/computers'
+              path='/entertainment/film'
               element={
                 <ErrorBoundary fallback={<ErrorFallback />}>
                   <Suspense fallback={<Loading />}>
-                    <Computers />
+                    <Film />
                   </Suspense>
                 </ErrorBoundary>
               }
             />
-
             <Route
-              path='/mathematics'
-              element={
-                <ErrorBoundary fallback={<ErrorFallback />}>
-                  <Suspense fallback={<Loading />}>
-                    <Mathematics />
-                  </Suspense>
-                </ErrorBoundary>
-              }
-            />
-
-            <Route
-              path='/music'
+              path='/entertainment/music'
               element={
                 <ErrorBoundary fallback={<ErrorFallback />}>
                   <Suspense fallback={<Loading />}>
@@ -189,13 +298,237 @@ const App = () => {
                 </ErrorBoundary>
               }
             />
-
             <Route
-              path='/vehicles'
+              path='/entertainment/musicals_&_theater'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <MusicalsAndTheater />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path='/entertainment/Television'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <Television />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path='/entertainment/video_games'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <VideoGames />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            {/* environment */}
+            <Route
+              path='/environment'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <Environment />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path='/environment/Animals'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <Animals />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path='/environment/Geography'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <Geography />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            {/* misc */}
+            <Route
+              path='/misc'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <Misc />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path='/misc/general_knowledge'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <GeneralKnowledge />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path='/misc/random'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <Random />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            {/* pop culture */}
+            <Route
+              path='/pop_culture'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <PopCulture />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path='/popular_culture/celebrities'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <Celebrities />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path='/popular_culture/sports'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <Sports />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path='/popular_culture/vehicles'
               element={
                 <ErrorBoundary fallback={<ErrorFallback />}>
                   <Suspense fallback={<Loading />}>
                     <Vehicles />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            {/* science */}
+            <Route
+              path='/science'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <Science />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path='/science/computers'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <Computers />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path='/science/gadgets'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <Gadgets />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path='/science/mathematics'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <Mathematics />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path='/science/science_&_nature'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <ScienceAndNature />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            {/* social science */}
+            <Route
+              path='/social_science'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <SocialScience />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path='/social_science/art'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <Art />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path='/social_science/history'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <History />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path='/social_science/mythology'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <Mythology />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path='/social_science/politics'
+              element={
+                <ErrorBoundary fallback={<ErrorFallback />}>
+                  <Suspense fallback={<Loading />}>
+                    <Politics />
                   </Suspense>
                 </ErrorBoundary>
               }
