@@ -6,7 +6,9 @@ export const fetchAPIQuizQuestions = async (
   category: number,
   type: string
 ) => {
-  const endpoint = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=${type}`;
+  const endpoint = category
+    ? `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=${type}`
+    : `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=${type}`;
 
   const data = await (await fetch(endpoint)).json();
 
